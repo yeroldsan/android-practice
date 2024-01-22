@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BMI</string>
+    <string name="bmi_result">"Body Mass Index:"</string>
+    <string name="title_bmi">BMI Calculator</string>
 </resources>
