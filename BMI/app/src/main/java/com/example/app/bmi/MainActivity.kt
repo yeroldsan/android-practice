@@ -10,11 +10,11 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -61,10 +61,117 @@ fun Bmi() {
     val bmi =
         if (weight > 0 && height > 0) weight / (height * height) else 0.0
 
-    
+    Column (
+        verticalArrangement = Arrangement.SpaceEvenly,
+        horizontalAlignment =  Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxHeight()
+            .padding(16.dp)
+    ) {
+        Card (
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surfaceVariant,
+            ),
+            modifier = Modifier
+                .size(width = 400.dp, height = 400.dp)
+                .padding(horizontal = 26.dp, vertical = 8.dp)
+        ) {
+            Column (
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment =  Alignment.CenterHorizontally,
+                modifier = Modifier
+                    //.fillMaxHeight()
+                    .padding(20.dp)
+            ) {
+                Text(
+                    text = stringResource(R.string.title_bmi),
+                    style = MaterialTheme.typography.titleLarge,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier
+                        .padding(16.dp)
+                )
+                Text(
+                    text = "Calculate your body mass index by simply entering your height and weight.",
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.secondary,
+                    modifier = Modifier
+                        .padding(16.dp)
+                )
+            }
+        }
+        Card (
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surfaceVariant,
+            ),
+            modifier = Modifier
+                //.size(width = 400.dp, height = 400.dp)
+                .padding(horizontal = 26.dp, vertical = 8.dp)
+        ) {
+            Row (
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(26.dp)
+            ) {
+                Text(
+                    text = stringResource(R.string.bmi_result),
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.primary,
+                )
+                Text(
+                    text = String.format("%.2f", bmi),
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.primary,
+                )
+            }
+        }
+        Card (
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surfaceVariant,
+            ),
+            modifier = Modifier
+                .size(width = 400.dp, height = 400.dp)
+                .padding(horizontal = 26.dp, vertical = 8.dp)
+        ) {
+            Column (
+                modifier = Modifier
+                    .padding(16.dp)
+            ) {
+                OutlinedTextField(
+                    value = heightInput,
+                    onValueChange = { heightInput = it.replace(',', '.') },
+                    label = { Text("Height") },
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+
+                )
+                OutlinedTextField(
+                    value = weightInput,
+                    onValueChange = { weightInput = it.replace(',', '.') },
+                    label = { Text("Weight") },
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                )
+                OutlinedTextField(
+                    value = weightInput,
+                    onValueChange = { weightInput = it.replace(',', '.') },
+                    label = { Text("Age") },
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                )
+                OutlinedTextField(
+                    value = weightInput,
+                    onValueChange = { weightInput = it.replace(',', '.') },
+                    label = { Text("Address") },
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                )
+            }
+        }
+    }
 }
 
-@Preview(showBackground = false, showSystemUi = true)
+@Preview
 @Composable
 fun BmiPreview() {
     BMITheme {
