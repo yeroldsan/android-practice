@@ -12,8 +12,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
@@ -56,117 +59,137 @@ fun Bmi() {
     var weightInput: String by remember {
         mutableStateOf("")
     }
-    val height = heightInput.toFloatOrNull() ?: 0.0f
+    val height = heightInput.toFloatOrNull() ?: 0.00F
     val weight = weightInput.toIntOrNull() ?: 0
     val bmi =
-        if (weight > 0 && height > 0) weight / (height * height) else 0.0
+        if (weight > 0 && height > 0) weight / (height * height) else 0.00F
 
     Column (
         verticalArrangement = Arrangement.SpaceEvenly,
-        horizontalAlignment =  Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxHeight()
-            .padding(16.dp)
+            .fillMaxWidth()
+            .padding(36.dp)
     ) {
-        Card (
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceVariant,
-            ),
+        Introduction()
+        Result(bmi = bmi)
+        DataInput(
+            heightInput,
+            weightInput,
+            onHeightChange = { heightInput = it },
+            onWeightChange = { weightInput = it }
+        )
+    }
+}
+
+@Composable
+fun Introduction() {
+    Card (
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+        ),
+        modifier = Modifier
+            //.size(width = 400.dp, height = 400.dp)
+            .padding(vertical = 8.dp)
+    ) {
+        Column (
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment =  Alignment.CenterHorizontally,
             modifier = Modifier
-                .size(width = 400.dp, height = 400.dp)
-                .padding(horizontal = 26.dp, vertical = 8.dp)
+                .padding(20.dp)
         ) {
-            Column (
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment =  Alignment.CenterHorizontally,
+            Text(
+                text = stringResource(R.string.title_bmi),
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier
-                    //.fillMaxHeight()
-                    .padding(20.dp)
-            ) {
-                Text(
-                    text = stringResource(R.string.title_bmi),
-                    style = MaterialTheme.typography.titleLarge,
-                    color = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier
-                        .padding(16.dp)
-                )
-                Text(
-                    text = "Calculate your body mass index by simply entering your height and weight.",
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.secondary,
-                    modifier = Modifier
-                        .padding(16.dp)
-                )
-            }
+                    .padding(vertical = 10.dp)
+            )
+            Text(
+                text = stringResource(R.string.intro),
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.secondary,
+                modifier = Modifier
+                    .padding(vertical = 16.dp)
+            )
         }
-        Card (
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceVariant,
-            ),
+    }
+}
+
+@Composable
+fun Result(bmi: Float) {
+    Card (
+        colors = CardDefaults.cardColors(
+            containerColor =
+                MaterialTheme.colorScheme.surfaceVariant
+                //else if (bmi < 18.5F) MaterialTheme.colorScheme.secondary
+                //else if (bmi < 25F) MaterialTheme.colorScheme.primary
+                //else MaterialTheme.colorScheme.error
+        ),
+        modifier = Modifier
+            .padding(vertical = 10.dp)
+    ) {
+        Row (
+            horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
-                //.size(width = 400.dp, height = 400.dp)
-                .padding(horizontal = 26.dp, vertical = 8.dp)
+                .fillMaxWidth()
+                .padding(26.dp)
         ) {
-            Row (
-                horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(26.dp)
-            ) {
-                Text(
-                    text = stringResource(R.string.bmi_result),
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.primary,
-                )
-                Text(
-                    text = String.format("%.2f", bmi),
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.primary,
-                )
-            }
+            Text(
+                text = stringResource(R.string.bmi_result),
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.primary,
+            )
+            Text(
+                text = String.format("%.2f", bmi),
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.primary,
+            )
         }
-        Card (
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceVariant,
-            ),
+    }
+}
+
+@Composable
+fun DataInput(
+    heightInput: String,
+    weightInput: String,
+    onHeightChange: (String) -> Unit,
+    onWeightChange: (String) -> Unit
+) {
+    Card (
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+        ),
+        modifier = Modifier
+            .size(width = 400.dp, height = 400.dp)
+            .padding(vertical = 10.dp)
+    ) {
+        Column (
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment =  Alignment.CenterHorizontally,
             modifier = Modifier
-                .size(width = 400.dp, height = 400.dp)
-                .padding(horizontal = 26.dp, vertical = 8.dp)
+                .fillMaxWidth()
+                .fillMaxHeight()
         ) {
-            Column (
-                modifier = Modifier
-                    .padding(16.dp)
-            ) {
-                OutlinedTextField(
-                    value = heightInput,
-                    onValueChange = { heightInput = it.replace(',', '.') },
-                    label = { Text("Height") },
-                    singleLine = true,
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            Icon(
+                imageVector = Icons.Filled.Person,
+                contentDescription = null,
+            )
+            OutlinedTextField(
+                value = heightInput,
+                onValueChange = { onHeightChange(it.replace(',', '.')) },
+                label = { Text("Height") },
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
 
                 )
-                OutlinedTextField(
-                    value = weightInput,
-                    onValueChange = { weightInput = it.replace(',', '.') },
-                    label = { Text("Weight") },
-                    singleLine = true,
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-                )
-                OutlinedTextField(
-                    value = weightInput,
-                    onValueChange = { weightInput = it.replace(',', '.') },
-                    label = { Text("Age") },
-                    singleLine = true,
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-                )
-                OutlinedTextField(
-                    value = weightInput,
-                    onValueChange = { weightInput = it.replace(',', '.') },
-                    label = { Text("Address") },
-                    singleLine = true,
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-                )
-            }
+            OutlinedTextField(
+                value = weightInput,
+                onValueChange = { onWeightChange(it.replace(',', '.')) },
+                label = { Text("Weight") },
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            )
         }
     }
 }
