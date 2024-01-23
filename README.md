@@ -9,7 +9,7 @@ This mono repository contains a collection of Android applications built with Ko
 
 ## Prerequisites
 Ensure you have the following installed:
-- [Android Studio](link-to-android-studio)
+- [Android Studio](https://developer.android.com/studio)
 - ...
 
 ## Getting Started
