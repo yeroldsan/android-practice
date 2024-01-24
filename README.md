@@ -18,9 +18,9 @@ To try out any of these apps, you need to have the following installed:
 6. Connect your phone (WiFI/USB) or create a new virtual device following on screen instruction.
 
 ## Development Guidelines
-- Follow Kotlin coding conventions. 👩‍💻
-- Use Material theme for consistent UI. 🎨
-- Leverage Jetpack Compose for modern UI development. 🚀
+- 🧑‍💻 Follow Kotlin coding conventions.
+- 🎨 Use Material theme for consistent UI.
+- 🚀 Leverage Jetpack Compose for modern UI development.
 
 ## Directory Structure
 ...
