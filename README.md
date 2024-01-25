@@ -13,9 +13,15 @@ To try out any of these apps, you need to have the following installed:
 1. Clone the repository.
 2. Navigate to the project you want to explore.
 3. Open the project in Android Studio.
-4. Check if the Gradle build will be successful using Build/Make Module "App". _You might have to install the right Android SDK via Tools/SDK Manager first._
-5. Run the app by clicking on ```Run``` -> Run 'app'.
+4. Check if the Gradle build will be successful using Build/Make Module "App".
+5. Click the ```▶ Run``` button to built the application.
 6. Connect your phone (WiFI/USB) or create a new virtual device following on screen instruction.
+
+> [!NOTE]
+> You might have to install the right Android SDK via Tools/SDK Manager first in step 4.
+
+> [!TIP]
+> In case of lag, please select Realise version build in step 6
 
 ## Development Guidelines
 - 🧑‍💻 Follow Kotlin coding conventions.
