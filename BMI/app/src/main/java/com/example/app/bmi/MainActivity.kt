@@ -174,6 +174,9 @@ fun DataInput(
             Icon(
                 imageVector = Icons.Filled.Person,
                 contentDescription = null,
+                modifier = Modifier
+                    //.padding(vertical = 10.dp)
+                    .size(75.dp)
             )
             OutlinedTextField(
                 value = heightInput,
