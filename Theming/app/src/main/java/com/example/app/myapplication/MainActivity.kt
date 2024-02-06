@@ -59,9 +59,13 @@ fun MyApp(header: String) {
         )
         Button(
             onClick = { /*TODO*/ },
-            modifier = appModifier
+            modifier = appModifier,
+            shape = MaterialTheme.shapes.medium
         ) {
-            Text(text = "Submit")
+            Text(
+                text = "Submit",
+                style = MaterialTheme.typography.bodyLarge
+            )
         }
     }
 }
