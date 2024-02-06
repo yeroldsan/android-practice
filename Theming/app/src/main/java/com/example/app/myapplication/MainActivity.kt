@@ -6,14 +6,22 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.app.myapplication.ui.theme.MyApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MyApp("Android")
+                    MyApp("My title")
                 }
             }
         }
@@ -34,22 +42,26 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MyApp(name: String, modifier: Modifier = Modifier) {
+fun MyApp(header: String) {
+    val appModifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+    val userInput by remember { mutableStateOf("") }
+
     Column (
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(
-            text = "Hello $name!",
-            modifier = modifier
+            text = header,
+            style = MaterialTheme.typography.titleLarge,
+            modifier = appModifier
         )
         OutlinedTextField(
-            value = "T",
+            value = userInput,
             onValueChange = { /* TODO */ },
-            modifier = Modifier
+            modifier = appModifier
         )
         Button(
             onClick = { /*TODO*/ },
-            modifier = Modifier
+            modifier = appModifier
         ) {
             Text(text = "Submit")
         }
@@ -60,6 +72,6 @@ fun MyApp(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun MyAppPreview() {
     MyApplicationTheme {
-        MyApp("Android")
+        MyApp("My title")
     }
 }
