@@ -4,6 +4,7 @@ This mono repository contains a collection of Android applications built with Ko
 ## Projects
 - 📊 **BMI:** Easily calculate your Body Mass Index and track your health progress. _Track feature in progress_.
 - 🪪 **LoginFrom:** Present a clean login interface with material design elements, state management and data validation.
+- 🎨 **Theming:** Use custom colors, typography and shapes without dynamic colors.
 
 ## 💻 Requirements
 To try out any of these apps, you need to have the following installed:
