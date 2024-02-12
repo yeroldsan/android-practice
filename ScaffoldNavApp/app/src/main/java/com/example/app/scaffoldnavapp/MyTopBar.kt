@@ -1,8 +1,11 @@
 package com.example.app.scaffoldnavapp
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -25,6 +28,7 @@ import androidx.compose.ui.text.style.TextOverflow
 fun MyTopBar() {
     var expanded by remember { mutableStateOf(false) }
     val menuOptions = listOf("Info", "Settings")
+    val menuIcons = listOf(Icons.Outlined.Info, Icons.Outlined.Settings)
     CenterAlignedTopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
@@ -55,7 +59,11 @@ fun MyTopBar() {
                 onDismissRequest = { expanded = false }
             ) {
                 menuOptions.forEach{ option ->
-                    DropdownMenuItem(text = { Text(text = option) }, onClick = { /*TODO*/ })
+                    DropdownMenuItem(
+                        text = { Text(text = option) },
+                        onClick = { /*TODO*/ },
+                        leadingIcon = { menuIcons[menuOptions.indexOf(option)] }
+                    )
                 }
             }
         },
