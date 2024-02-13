@@ -1,8 +1,7 @@
 package com.example.app.scaffoldnavapp
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Settings
@@ -22,10 +21,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyTopBar() {
+fun MainTopBar(title: String, navController: NavController) {
     var expanded by remember { mutableStateOf(false) }
     val menuOptions = listOf("Info", "Settings")
     val menuIcons = listOf(Icons.Outlined.Info, Icons.Outlined.Settings)
@@ -35,38 +35,43 @@ fun MyTopBar() {
             titleContentColor = MaterialTheme.colorScheme.primary,
         ),
         title = { Text(
-                text = "TopBar",
+                text = title,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )},
         navigationIcon = {
-            IconButton(
-                onClick = { /*TODO*/ }
-            ) {
-                Icon(Icons.Filled.Menu, contentDescription = null)
+            if (navController.previousBackStackEntry != null) {
+                IconButton(onClick = { navController.navigateUp() }) {
+                    Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
+                }
             }
         },
         actions = {
-            IconButton(
-                onClick = {
-                    expanded = !expanded
+                if (navController.previousBackStackEntry == null) {
+                    IconButton(
+                        onClick = {
+                            expanded = !expanded
+                        }
+                    ) {
+                        Icon(Icons.Filled.MoreVert, contentDescription = "More")
+                    }
+                    DropdownMenu(
+                        expanded = expanded,
+                        onDismissRequest = { expanded = false }
+                    ) {
+                        menuOptions.forEach{ option ->
+                            DropdownMenuItem(
+                                text = { Text(text = option) },
+                                onClick = {
+                                    navController.navigate(option)
+                                    expanded = false
+                                },
+                                leadingIcon = { Icon(menuIcons[menuOptions.indexOf(option)], contentDescription = option) }
+                            )
+                        }
+                    }
                 }
-            ) {
-                Icon(Icons.Filled.MoreVert, contentDescription = null)
-            }
-            DropdownMenu(
-                expanded = expanded,
-                onDismissRequest = { expanded = false }
-            ) {
-                menuOptions.forEach{ option ->
-                    DropdownMenuItem(
-                        text = { Text(text = option) },
-                        onClick = { /*TODO*/ },
-                        leadingIcon = { menuIcons[menuOptions.indexOf(option)] }
-                    )
-                }
-            }
         },
-        scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+        scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState()),
     )
 }
