@@ -2,31 +2,35 @@ package com.example.app.scaffoldnavapp
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 
 @Composable
-fun ScaffoldNavAppScreen() {
+fun ScaffoldNavAppScreen(title: String, text: String, navController: NavController) {
     Scaffold(
-        topBar = { MyTopBar() },
+        topBar = { MainTopBar(title, navController) },
         bottomBar = { MyBottomBar() },
     ) { innerPadding ->
         Column(
-            modifier = Modifier
-                .padding(innerPadding),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier.padding(innerPadding).fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                modifier = Modifier.padding(8.dp),
-                text =
-                """
-                    This is an example of a scaffold. It uses the Scaffold composable's parameters to create a screen with a simple top app bar, bottom app bar, and floating action button.
-                """.trimIndent(),
-            )
+            Column {
+                repeat(10) {
+                    Text(
+                        modifier = Modifier.padding(16.dp),
+                        text = it.toString() + " " + text.trimIndent(),
+                    )
+                }
+            }
         }
     }
 
