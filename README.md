@@ -6,6 +6,7 @@ This mono repository contains a collection of Android applications built with Ko
 - 🪪 **[LoginForm](LoginForm):** Present a clean login interface with material design elements, state management and data validation.
 - 🎨 **[Theming](Theming):** Use custom colors, typography and shapes without dynamic colors.
 - 🚴‍♀️ **[Calories](Calories):** Estimate calorie burn rates for various levels of physical activity.
+- 🧭 **[ScaffoldNavApp](ScaffoldNavApp):** Showcase seamless navigation within an Android application using Jetpack Compose and the Navigation component
 
 ## 💻 Requirements
 To try out any of these apps, you need to have the following installed:
