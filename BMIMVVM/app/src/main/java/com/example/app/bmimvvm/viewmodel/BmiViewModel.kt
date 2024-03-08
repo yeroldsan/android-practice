@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class BmiViewModel: ViewModel() {
@@ -11,7 +12,8 @@ class BmiViewModel: ViewModel() {
     private val _weight = MutableStateFlow("")
     private val _result = MutableStateFlow(0f)
 
-    val height: StateFlow<String> = _height
+    // The following two approach are equivalent
+    val height = _height.asStateFlow()
     val weight: StateFlow<String> = _weight
     val result: StateFlow<Float> = _result
 
