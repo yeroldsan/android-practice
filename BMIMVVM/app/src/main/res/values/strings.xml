@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">BMIMVVM</string>
+    <string name="instructions">Enter your height in cm and weight in kg</string>
+    <string name="introduction_message">This app will calculate your BMI based on your height and weight using the metric system and the MVVM pattern.</string>
+    <string name="bmi_title">BMI Calculator</string>
 </resources>
