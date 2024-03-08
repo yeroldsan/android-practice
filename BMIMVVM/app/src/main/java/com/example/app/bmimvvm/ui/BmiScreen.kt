@@ -19,13 +19,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.example.app.bmimvvm.viewmodel.BmiViewModel
 
 @Composable
 fun BmiScreen(
@@ -34,7 +31,7 @@ fun BmiScreen(
     bmiResult: Float,
     setHeight: (String) -> Unit,
     setWeight: (String) -> Unit,
-    calculateResult: () -> Unit
+    calculateResult: () -> Unit,
 ) {
 
     Column (
@@ -44,38 +41,9 @@ fun BmiScreen(
             .fillMaxWidth()
             .padding(36.dp)
     ) {
-        OutlinedTextField(
-            value = height,
-            onValueChange = { setHeight(it.replace(",", ".")) },
-            label = { Text("Height (cm)") },
-            singleLine = true,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            )
-        OutlinedTextField(
-            value = weight,
-            onValueChange = { setWeight(it.replace(",", ".")) },
-            label = { Text("Weight (kg)") },
-            singleLine = true,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-        )
-        Text(
-            text = String.format("BMI = %.2f", bmiResult),
-            style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.primary,
-        )
-        Button(
-            onClick = { calculateResult() },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 10.dp)
-        ) {
-            Text(text = "Calculate")
-        }
-
-
-//        Introduction()
-//        BmiResult(bmiResult)
-//        DataInput()
+        Introduction()
+        BmiResult(bmiResult)
+        DataInput(height, weight, setHeight, setWeight, calculateResult)
     }
 }
 
@@ -113,7 +81,7 @@ fun Introduction() {
 }
 
 @Composable
-fun BmiResult(result: Float) {
+fun BmiResult(bmiResult: Float) {
     Card (
         colors = CardDefaults.cardColors(
             containerColor =
@@ -137,7 +105,7 @@ fun BmiResult(result: Float) {
                 color = MaterialTheme.colorScheme.primary,
             )
             Text(
-                text = String.format("%.2f", result),
+                text = String.format("%.2f", bmiResult),
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.primary,
             )
@@ -147,11 +115,11 @@ fun BmiResult(result: Float) {
 
 @Composable
 fun DataInput(
-    heightInput: String = "0",
-    weightInput: String = "0",
-    onHeightChange: (String) -> Unit = {},
-    onWeightChange: (String) -> Unit = {},
-    calculateResult: () -> Unit = {}
+    height: String,
+    weight: String,
+    setHeight: (String) -> Unit,
+    setWeight: (String) -> Unit,
+    calculateResult: () -> Unit
 ) {
     Card (
         colors = CardDefaults.cardColors(
@@ -175,20 +143,28 @@ fun DataInput(
                     .size(75.dp)
             )
             OutlinedTextField(
-                value = heightInput,
-                onValueChange = { onHeightChange(it.replace(',', '.')); calculateResult() },
+                value = height,
+                onValueChange = { setHeight(it.replace(',', '.')) },
                 label = { Text("Height") },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
 
                 )
             OutlinedTextField(
-                value = weightInput,
-                onValueChange = { onWeightChange(it.replace(',', '.')); calculateResult() },
+                value = weight,
+                onValueChange = { setWeight(it.replace(',', '.')) },
                 label = { Text("Weight") },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
+            Button(
+                onClick = { calculateResult() },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 10.dp)
+            ) {
+                Text(text = "Calculate")
+            }
         }
     }
 }
