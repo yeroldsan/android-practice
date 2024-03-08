@@ -4,7 +4,5 @@ This Android application is a simple BMI calculator built with Kotlin and Jetpac
 
 ## Prerequisites
 
-Ensure you have the following installed:
+Ensure you have followed the instructions listed on the main README of this mono repository.
 
-- Android Studio
-- ...
