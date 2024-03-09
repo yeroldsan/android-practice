@@ -7,7 +7,7 @@ This mono repository contains a collection of Android applications built with Ko
 - **[Theming](Theming):** Use custom colors, typography and shapes without dynamic colors.
 - **[Calories](Calories):** Estimate calorie burn rates for various levels of physical activity.
 - **[ScaffoldNavApp](ScaffoldNavApp):** Showcase seamless navigation within an Android application using Jetpack Compose and the Navigation component.
-- **[BMIMVVM](BMIMVVM):** Here is the BMI application listed above. This example's using the ViewModel architectural pattern, StateFlow and Kotlin Coroutines for leraning purpose﻿.
+- **[BMIMVVM](BMIMVVM):** Here is the BMI application listed above. This example's using the ViewModel architectural pattern, StateFlow and Kotlin Coroutines for learning purpose﻿.
 
 ## Requirements
 To try out any of these apps, you need to have the following installed:
