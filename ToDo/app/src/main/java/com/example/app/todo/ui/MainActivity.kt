@@ -1,4 +1,4 @@
-package com.example.app.todo
+package com.example.app.todo.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
