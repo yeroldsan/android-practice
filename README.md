@@ -2,14 +2,14 @@
 This mono repository contains a collection of Android applications built with Kotlin, focusing on learning Android development, Material theme, and Jetpack Compose.
 
 ## Projects
-- 📊 **[BMI](BMI):** Easily calculate your Body Mass Index and track your health progress. _Track feature in progress_.
-- 🪪 **[LoginForm](LoginForm):** Present a clean login interface with material design elements, state management and data validation.
-- 🎨 **[Theming](Theming):** Use custom colors, typography and shapes without dynamic colors.
-- 🚴‍♀️ **[Calories](Calories):** Estimate calorie burn rates for various levels of physical activity.
-- 🧭 **[ScaffoldNavApp](ScaffoldNavApp):** Showcase seamless navigation within an Android application using Jetpack Compose and the Navigation component
-- 📊 **[BMIMVVM](BMIMVVM):** This is the BMI application using the ViewModel architectural pattern and StateFlow.
+- **[BMI](BMI):** Easily calculate your Body Mass Index with a well integrated Material You design.
+- **[LoginForm](LoginForm):** Present a clean login interface with material design elements, state management and data validation.
+- **[Theming](Theming):** Use custom colors, typography and shapes without dynamic colors.
+- **[Calories](Calories):** Estimate calorie burn rates for various levels of physical activity.
+- **[ScaffoldNavApp](ScaffoldNavApp):** Showcase seamless navigation within an Android application using Jetpack Compose and the Navigation component.
+- **[BMIMVVM](BMIMVVM):** Here is the BMI application listed above. This example's using the ViewModel architectural pattern, StateFlow and Kotlin Coroutines for leraning purpose﻿.
 
-## 💻 Requirements
+## Requirements
 To try out any of these apps, you need to have the following installed:
 - [Android Studio](https://developer.android.com/studio)
 
@@ -25,7 +25,7 @@ To try out any of these apps, you need to have the following installed:
 6. Click the ```▶ Run``` button to built the application.
 
 > [!TIP]
-> In case of lag, please select Realise version build in step 6
+> In case you experience lag when running the application, please select Release version build in step number 6.
 
 ## Development Guidelines
 - 🧑‍💻 Follow Kotlin coding conventions.
