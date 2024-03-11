@@ -9,6 +9,6 @@ class TodoViewModel: ViewModel() {
     val tasks: StateFlow<List<String>> = _tasks
 
     init {
-        _tasks.value = listOf("Task 1", "Task 2", "Task 3")
+        _tasks.value = listOf("Task 1", "Task 2", "Task 3", "Task 4", "Task 5")
     }
 }
