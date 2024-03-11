@@ -53,6 +53,8 @@ fun ToDoTheme(
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
+
+    /* By commenting out the code below, the status bar color is set to the top bar color.
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
@@ -61,6 +63,7 @@ fun ToDoTheme(
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }
+    */
 
     MaterialTheme(
         colorScheme = colorScheme,
