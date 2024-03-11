@@ -6,6 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 const val BASE_URL = "https://jsonplaceholder.typicode.com/"
 
+data class Success(val tasks: List<Task>)
 data class Task(
     // Example of how to rename a field
     // @SerializedName("userId") var uID: Int,
