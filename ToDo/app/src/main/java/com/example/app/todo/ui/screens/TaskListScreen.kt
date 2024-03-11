@@ -15,10 +15,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.app.todo.model.Task
 import com.example.app.todo.viewmodel.TodoViewModel
 
 @Composable
@@ -27,20 +29,14 @@ fun TaskListScreen(vModel: TodoViewModel = viewModel()) {
     TaskList(tasks)
 }
 
-@Preview
 @Composable
-fun TaskListPreview() {
-    TaskListScreen()
-}
-
-@Composable
-fun TaskList(tasks: List<String>) {
+fun TaskList(tasks: List<Task>) {
     LazyColumn (
         modifier = Modifier
             .fillMaxWidth(),
         contentPadding = PaddingValues(
-            horizontal = 16.dp,
-            vertical = 8.dp
+            horizontal = 24.dp,
+            vertical = 24.dp
         ),
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
@@ -51,16 +47,19 @@ fun TaskList(tasks: List<String>) {
 }
 
 @Composable
-fun TaskCard(task: String) {
+fun TaskCard(task: Task) {
     Card (
         modifier = Modifier.fillMaxWidth()
     ) {
         Box(
             modifier = Modifier.fillMaxWidth()
+                .padding(8.dp)
         ) {
             Text(
-                text = task,
+                text = task.title,
                 style = MaterialTheme.typography.bodyLarge,
+                color = if (task.completed) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.onSurface,
+                textDecoration = if (task.completed) TextDecoration.LineThrough else TextDecoration.None,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier
