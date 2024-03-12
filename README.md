@@ -1,5 +1,5 @@
 # Kotlin Android Lab
-This mono repository contains a collection of Android applications built with Kotlin, focusing on learning Android development, Material theme, and Jetpack Compose.
+This repository contains a set of individual Android Studio projects built with Kotlin. Each application demonstrates different use cases, complexity levels and APIs.
 
 ## Projects
 - **[BMI](BMI):** Easily calculate your Body Mass Index with a well integrated Material You design.
@@ -8,6 +8,7 @@ This mono repository contains a collection of Android applications built with Ko
 - **[Calories](Calories):** Estimate calorie burn rates for various levels of physical activity.
 - **[ScaffoldNavApp](ScaffoldNavApp):** Showcase seamless navigation within an Android application using Jetpack Compose and the Navigation component.
 - **[BMIMVVM](BMIMVVM):** Here is the BMI application listed above. This example's using the ViewModel architectural pattern, StateFlow and Kotlin Coroutines for learning purpose﻿.
+- **[ToDo](ToDo):** Render a list of tasks in cards. Retrofit, GSON, ViewModel architectural pattern, StateFlow are used in this application.
 
 ## Requirements
 To try out any of these apps, you need to have the following installed:
