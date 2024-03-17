@@ -19,9 +19,9 @@ To try out any of these apps, you need to have the following installed:
 
 ## Getting Started
 1. Clone the repository.
-3. Open Android Studio and navigate to the project you want to explore.
-5. Pair your phone with Android Studio over Wi-FI or using USB following on screen instruction.
-6. Click the ```▶ Run``` button to build and run the application.
+2. Open Android Studio and navigate to the project you want to explore.
+3. Pair your phone with Android Studio over Wi-FI or using USB following on screen instruction.
+4. Click the ```▶ Run``` button to build and run the application.
 
 > [!TIP]
-> In case you experience lag when running the application, please select Release version build in step number 6.
+> In case you experience lag when running the application, please select Release version build in step number 4.
