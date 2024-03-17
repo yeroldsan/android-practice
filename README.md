@@ -19,16 +19,9 @@ To try out any of these apps, you need to have the following installed:
 
 ## Getting Started
 1. Clone the repository.
-2. Navigate to the project you want to explore.
-3. Open the project in Android Studio.
-4. Check if the Gradle build will be successful using Build/Make Module "App".
-5. Pair your phone using Wi-FI or USB or create a new virtual device following on screen instruction.
-6. Click the ```▶ Run``` button to built the application.
+3. Open Android Studio and navigate to the project you want to explore.
+5. Pair your phone with Android Studio over Wi-FI or using USB following on screen instruction.
+6. Click the ```▶ Run``` button to build and run the application.
 
 > [!TIP]
 > In case you experience lag when running the application, please select Release version build in step number 6.
-
-## Development Guidelines
-- 🧑‍💻 Follow Kotlin coding conventions.
-- 🎨 Use Material theme for consistent UI.
-- 🚀 Leverage Jetpack Compose for modern UI development.
